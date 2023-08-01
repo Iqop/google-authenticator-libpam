@@ -58,7 +58,7 @@
 #define MODULE_NAME   "pam_google_auth"
 
 #define SECRET        "~/.google_authenticator"
-#define CODE_PROMPT   "Verification code: "
+#define CODE_PROMPT   "2FA code: "
 #define PWCODE_PROMPT "Password & verification code: "
 
 typedef struct Params {
@@ -2109,7 +2109,7 @@ static int google_authenticator(pam_handle_t *pamh,
   // case the PAM config considers this module "sufficient".
   // (or more complex equivalents)
   if (params.nullok == SECRETNOTFOUND) {
-    rc = PAM_IGNORE;
+    rc = PAM_SUCCESS;
   }
 
   // Persist the new state.
